@@ -1,9 +1,15 @@
-# Fabric Example Mod
+# COOBaCH
 
-## Setup
+## Yo
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+Development of this mod was inspired by old Industrial Craft 2. We wanted in on newer versions, but we also wanted to make this as we would like it to be.
 
-## License
+## Thx
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+love my mom, thank you for everything
+
+
+
+## yeah
+
+mb i will rewrite this readme
