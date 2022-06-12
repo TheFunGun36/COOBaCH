@@ -13,9 +13,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class COOBaCH implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
@@ -25,12 +22,12 @@ public class COOBaCH implements ModInitializer {
 		new Identifier("coobach", "coobach"),
 		() -> new ItemStack(COOBaCH.THERMAL_GENERATOR));
 
-	public static final Logger LOGGER = LoggerFactory.getLogger("coobach");
 	public static final ThermalGenerator THERMAL_GENERATOR = new ThermalGenerator(
 		FabricBlockSettings.of(Material.METAL)
 			.strength(5, 8)
 			.sounds(BlockSoundGroup.STONE)
-			.luminance(ThermalGenerator::getLightLevel));
+			.luminance(ThermalGenerator::getLightLevel)
+			.requiresTool());
 	public static final BlockItem THERMAL_GENERATOR_ITEM = new BlockItem(
 		THERMAL_GENERATOR,
 		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
@@ -45,7 +42,6 @@ public class COOBaCH implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("coobach", "steel_ingot"), STEEL_INGOT);
 		Registry.register(Registry.BLOCK, new Identifier("coobach", "thermal_generator"), THERMAL_GENERATOR);
 		Registry.register(Registry.ITEM, new Identifier("coobach", "thermal_generator"), THERMAL_GENERATOR_ITEM);
-		LOGGER.info("Hello Fabric world!");
 	}
 	
 }
