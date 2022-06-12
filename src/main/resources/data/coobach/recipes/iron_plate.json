@@ -5,10 +5,10 @@
       "tag": "coobach:hammer"
     },
     {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:iron_ingot"
     }
   ],
   "result": {
-    "item": "coobach:copper_plate"
+    "item": "coobach:iron_plate"
   }
 }

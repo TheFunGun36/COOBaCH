@@ -39,15 +39,16 @@ public class COOBaCH implements ModInitializer {
 	public static final Item STEEL_INGOT = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 
 	//Tools
-	public static final ToolItem IRON_HAMMER = new ToolItem(
-		ToolMaterials.IRON,  
-		new FabricItemSettings()
-			.group(COOBaCH.COOBACH_GROUP)
-			.maxDamage(40));
+
+	public static final ToolItem IRON_HAMMER = new ToolItem(ToolMaterials.IRON,  
+		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(40));
+
+	public static final ToolItem STEEL_HAMMER = new ToolItem(SteelToolMaterial.INSTANCE,
+		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(64));
 
 	//Materials
-	//public static final Item IRON_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
-	//public static final Item STEEL_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+	public static final Item IRON_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+	public static final Item STEEL_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item COPPER_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 
 	@Override
@@ -69,10 +70,11 @@ public class COOBaCH implements ModInitializer {
 
 		//Tools
 		Registry.register(Registry.ITEM, "coobach:iron_hammer", IRON_HAMMER);
+		Registry.register(Registry.ITEM, "coobach:steel_hammer", STEEL_HAMMER);
 
 		//Materials
-		//Registry.register(Registry.ITEM, "coobach:iron_plate", IRON_PLATE);
-		//Registry.register(Registry.ITEM, "coobach:iron_plate", STEEL_PLATE);
+		Registry.register(Registry.ITEM, "coobach:iron_plate", IRON_PLATE);
+		Registry.register(Registry.ITEM, "coobach:steel_plate", STEEL_PLATE);
 		Registry.register(Registry.ITEM, "coobach:copper_plate", COPPER_PLATE);
 		
 		LOGGER.info("Hello Fabric world!");
