@@ -1,0 +1,9 @@
+{
+    "parent": "minecraft:block/furnace",
+    "textures": {
+        "front": "coobach:block/thermal_generator_front_on",
+        "side": "coobach:block/thermal_generator_side",
+        "top": "coobach:block/thermal_generator_side",
+        "bottom": "coobach:block/thermal_generator_side"
+    }
+}

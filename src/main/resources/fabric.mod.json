@@ -1,29 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "coobach",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "COOBaCH",
+  "description": "Tech mod, inspired by IndustrialCraft and BuildCraft",
   "authors": [
-    "Me!"
+    "Jora",
+    "Nekit"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://vk.com/chelovek_jora",
+    "sources": "https://github.com/TheFunGun36/COOBaCH"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "GNU General Public License v3.0",
+  "icon": "assets/coobach/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "jora.coobach.COOBaCH"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "coobach.mixins.json"
   ],
 
   "depends": {
