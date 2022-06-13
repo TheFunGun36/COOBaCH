@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "coobach:thermal_generator"
+    "coobach:thermal_generator",
+    "coobach:tin_ore"
   ]
 }

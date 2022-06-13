@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.block.Material;
+import net.minecraft.block.OreBlock;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -28,6 +29,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterials;
 
@@ -51,8 +53,6 @@ public class COOBaCH implements ModInitializer {
 
 
 	// Thermal generator
-	public static final Identifier THERMAL_GENERATOR_ID
-		= new Identifier("coobach", "thermal_generator");
 
 	public static final ThermalGeneratorBlock THERMAL_GENERATOR_BLOCK
 		= new ThermalGeneratorBlock(FabricBlockSettings.of(Material.METAL));
@@ -76,23 +76,39 @@ public class COOBaCH implements ModInitializer {
 
 
 	//Materials
+	public static final Item RAW_TIN = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+
 	public static final Item STEEL_INGOT = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+	public static final Item TIN_INGOT = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+
 	public static final Item IRON_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item STEEL_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item COPPER_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+	public static final Item TIN_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+
+	//World Gen - Ores Blocks
+
+	public static final OreBlock TIN_ORE = new OreBlock(FabricBlockSettings
+	.of(Material.METAL)
+		.strength(3.0f, 3.0f)
+		.sounds(BlockSoundGroup.METAL)	
+		.requiresTool());
+
+	public static final BlockItem TIN_ORE_ITEM = new BlockItem(TIN_ORE, new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 
 	//World Gen 
-	private static ConfiguredFeature<?, ?> OVERWORLD_WOOL_ORE_CONFIGURED_FEATURE = new ConfiguredFeature(
+
+	private static ConfiguredFeature<?, ?> OVERWORLD_TIN_ORE_CONFIGURED_FEATURE = new ConfiguredFeature(
 		Feature.ORE,
 		new OreFeatureConfig(
 			OreConfiguredFeatures.STONE_ORE_REPLACEABLES,
-			THERMAL_GENERATOR_BLOCK.getDefaultState(),
-			9)); // vein size
+			TIN_ORE.getDefaultState(),
+			12)); // vein size
  
-  public static PlacedFeature OVERWORLD_WOOL_ORE_PLACED_FEATURE = new PlacedFeature(
-	RegistryEntry.of(OVERWORLD_WOOL_ORE_CONFIGURED_FEATURE),
+  public static PlacedFeature OVERWORLD_TIN_ORE_PLACED_FEATURE = new PlacedFeature(
+	RegistryEntry.of(OVERWORLD_TIN_ORE_CONFIGURED_FEATURE),
 	Arrays.asList(
-		CountPlacementModifier.of(20), // number of veins per chunk
+		CountPlacementModifier.of(14), // number of veins per chunk
 		SquarePlacementModifier.of(), // spreading horizontally
 		HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(64))
 	)); // height
@@ -103,9 +119,9 @@ public class COOBaCH implements ModInitializer {
 		LOGGER.info("Hello world!");
 
 		// Energy consumers
-		Registry.register(Registry.BLOCK, THERMAL_GENERATOR_ID, THERMAL_GENERATOR_BLOCK);
-		Registry.register(Registry.BLOCK_ENTITY_TYPE, THERMAL_GENERATOR_ID,	THERMAL_GENERATOR_BLOCK_ENTITY);
-		Registry.register(Registry.ITEM, THERMAL_GENERATOR_ID, THERMAL_GENERATOR_ITEM);
+		Registry.register(Registry.BLOCK, "coobach:thermal_generator", THERMAL_GENERATOR_BLOCK);
+		Registry.register(Registry.BLOCK_ENTITY_TYPE, "coobach:thermal_generator",	THERMAL_GENERATOR_BLOCK_ENTITY);
+		Registry.register(Registry.ITEM, "coobach:thermal_generator", THERMAL_GENERATOR_ITEM);
 
 		// Recipes
 		Registry.register(Registry.RECIPE_SERIALIZER,
@@ -117,17 +133,28 @@ public class COOBaCH implements ModInitializer {
 		Registry.register(Registry.ITEM, "coobach:steel_hammer", STEEL_HAMMER);
 
 		// Materials
+
+		Registry.register(Registry.ITEM, "coobach:raw_tin", RAW_TIN);
+		
 		Registry.register(Registry.ITEM, "coobach:steel_ingot", STEEL_INGOT);
+		Registry.register(Registry.ITEM, "coobach:tin_ingot", TIN_INGOT);
+
 		Registry.register(Registry.ITEM, "coobach:iron_plate", IRON_PLATE);
 		Registry.register(Registry.ITEM, "coobach:steel_plate", STEEL_PLATE);
 		Registry.register(Registry.ITEM, "coobach:copper_plate", COPPER_PLATE);
+		Registry.register(Registry.ITEM, "coobach:tin_plate", TIN_PLATE);
+
+		// World Gen - Ores
+
+		Registry.register(Registry.BLOCK, "coobach:tin_ore", TIN_ORE);
+		Registry.register(Registry.ITEM, "coobach:tin_ore", TIN_ORE_ITEM);
 
 		// World Gen
-		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "coobach:overworld_wool_ore", OVERWORLD_WOOL_ORE_CONFIGURED_FEATURE);
-    	Registry.register(BuiltinRegistries.PLACED_FEATURE, "coobach:overworld_wool_ore", OVERWORLD_WOOL_ORE_PLACED_FEATURE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "coobach:overworld_tin_ore", OVERWORLD_TIN_ORE_CONFIGURED_FEATURE);
+    	Registry.register(BuiltinRegistries.PLACED_FEATURE, "coobach:overworld_tin_ore", OVERWORLD_TIN_ORE_PLACED_FEATURE);
 		
     	BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), 
 			net.minecraft.world.gen.GenerationStep.Feature.UNDERGROUND_ORES,
-        	RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("coobach:overworld_wool_ore")));
+        	RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("coobach:overworld_tin_ore")));
 	}
 }
