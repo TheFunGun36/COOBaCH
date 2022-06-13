@@ -28,7 +28,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterials;
 
@@ -44,47 +43,45 @@ import jora.coobach.recipe.ShapelessRecipeWithToolsSerializer;
 import jora.coobach.screen.ThermalGeneratorScreenHandler;
 
 public class COOBaCH implements ModInitializer {
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger("coobach");
 
-
-	//JORA
+	// Item group
 	public static final ItemGroup COOBACH_GROUP = FabricItemGroupBuilder.build(
-		new Identifier("coobach", "coobach"),
-		() -> new ItemStack(COOBaCH.THERMAL_GENERATOR_BLOCK));
+		new Identifier("coobach", "coobach"), () -> new ItemStack(COOBaCH.THERMAL_GENERATOR_BLOCK));
 
-	
-	public static final Identifier THERMAL_GENERATOR_ID = new Identifier("coobach", "thermal_generator");
+
+	// Thermal generator
+	public static final Identifier THERMAL_GENERATOR_ID
+		= new Identifier("coobach", "thermal_generator");
+
 	public static final ThermalGeneratorBlock THERMAL_GENERATOR_BLOCK
-		= new ThermalGeneratorBlock(FabricBlockSettings.of(Material.METAL)
-			.strength(5, 8)
-			.sounds(BlockSoundGroup.METAL)
-			.requiresTool());
+		= new ThermalGeneratorBlock(FabricBlockSettings.of(Material.METAL));
+
 	public static final BlockEntityType<ThermalGeneratorBlockEntity> THERMAL_GENERATOR_BLOCK_ENTITY
 		= FabricBlockEntityTypeBuilder.create(ThermalGeneratorBlockEntity::new, THERMAL_GENERATOR_BLOCK).build(null);
-	public static final BlockItem THERMAL_GENERATOR_ITEM = new BlockItem(
-		THERMAL_GENERATOR_BLOCK,
-		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+
+	public static final BlockItem THERMAL_GENERATOR_ITEM
+		= new BlockItem(THERMAL_GENERATOR_BLOCK, new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+
 	public static final ScreenHandlerType<ThermalGeneratorScreenHandler> THERMAL_GENERATOR_SCREEN_HANDLER
 		= new ScreenHandlerType<ThermalGeneratorScreenHandler>(ThermalGeneratorScreenHandler::new);
 
-	public static final Item STEEL_INGOT = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 
 	//Tools
-	public static final ToolItem IRON_HAMMER = new ToolItem(ToolMaterials.IRON,  
-		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(40));
+	public static final ToolItem IRON_HAMMER
+		= new ToolItem(ToolMaterials.IRON, new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(40));
 
-	public static final ToolItem STEEL_HAMMER = new ToolItem(SteelToolMaterial.INSTANCE,
-		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(64));
+	public static final ToolItem STEEL_HAMMER
+		= new ToolItem(SteelToolMaterial.INSTANCE, new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(64));
+
 
 	//Materials
+	public static final Item STEEL_INGOT = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item IRON_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item STEEL_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item COPPER_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 
-	//World Gen
+	//World Gen 
 	private static ConfiguredFeature<?, ?> OVERWORLD_WOOL_ORE_CONFIGURED_FEATURE = new ConfiguredFeature(
 		Feature.ORE,
 		new OreFeatureConfig(

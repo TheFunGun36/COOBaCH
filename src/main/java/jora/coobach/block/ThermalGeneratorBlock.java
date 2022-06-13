@@ -11,6 +11,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -31,7 +32,11 @@ public class ThermalGeneratorBlock extends BlockWithEntity {
     }
 
     public ThermalGeneratorBlock(Settings settings) {
-        super(settings.luminance(ThermalGeneratorBlock::getLightLevel));
+        super(settings
+            .luminance(ThermalGeneratorBlock::getLightLevel)
+            .strength(5, 8)
+            .sounds(BlockSoundGroup.METAL)
+            .requiresTool());
         setDefaultState(this.stateManager.getDefaultState().with(Properties.LIT, false).with(Properties.FACING, Direction.NORTH));
     }
 
