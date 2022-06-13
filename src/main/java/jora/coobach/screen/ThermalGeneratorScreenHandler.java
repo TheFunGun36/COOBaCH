@@ -1,6 +1,7 @@
 package jora.coobach.screen;
 
 import jora.coobach.COOBaCH;
+import jora.coobach.screen.slot.FuelSlot;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -28,7 +29,7 @@ public class ThermalGeneratorScreenHandler extends ScreenHandler {
         addProperties(propertyDelegate);
 
         // fuel slot
-        addSlot(new Slot(inventory, 0, 74, 40));
+        addSlot(new FuelSlot(inventory, 0, 74, 40));
 
         // player inventory
         int i;

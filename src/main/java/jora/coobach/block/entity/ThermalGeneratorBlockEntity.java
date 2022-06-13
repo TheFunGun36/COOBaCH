@@ -1,8 +1,5 @@
 package jora.coobach.block.entity;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.annotation.Nullable;
 
 import jora.coobach.COOBaCH;
@@ -10,24 +7,32 @@ import jora.coobach.energy.EnergyContainer;
 import jora.coobach.screen.ThermalGeneratorScreenHandler;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.LockableContainerBlockEntity;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
+import net.minecraft.util.Nameable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ThermalGeneratorBlockEntity
-extends LockableContainerBlockEntity {
+extends BlockEntity
+implements Inventory,
+NamedScreenHandlerFactory,
+Nameable {
     private ItemStack _fuelSlot;
     private int _burnTime;
     private int _burnTimeTotal;
@@ -36,7 +41,7 @@ extends LockableContainerBlockEntity {
 
     public ThermalGeneratorBlockEntity(BlockPos pos, BlockState state) {
         super(COOBaCH.THERMAL_GENERATOR_BLOCK_ENTITY, pos, state);
-        _energyContainer = new EnergyContainer(10000, true);
+        _energyContainer = new EnergyContainer(1000, true);
         _fuelSlot = ItemStack.EMPTY;
         _burnTime = 0;
         _burnTimeTotal = 0;
@@ -82,11 +87,10 @@ extends LockableContainerBlockEntity {
     }
 
     @Override
-    public Text getContainerName() {
+    public Text getName() {
         return Text.translatable("container.coobach.thermal_generator");
     }
 
-    @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
         return new ThermalGeneratorScreenHandler(syncId, playerInventory, this, propertyDelegate);
     }
@@ -97,8 +101,8 @@ extends LockableContainerBlockEntity {
         nbt.putInt("burn_time", _burnTime);
         nbt.putInt("burn_time_total", _burnTimeTotal);
         nbt.putBoolean("active_consumer", _activeConsumer);
-        _energyContainer.writeNbt(nbt);
-        _fuelSlot.writeNbt(nbt); 
+        nbt.put("energy", _energyContainer.writeNbt(new NbtCompound()));
+        nbt.put("fuel_slot", _fuelSlot.writeNbt(new NbtCompound()));
     }
 
     @Override
@@ -107,8 +111,8 @@ extends LockableContainerBlockEntity {
         _burnTime = nbt.getInt("burn_time");
         _burnTimeTotal = nbt.getInt("burn_time_total");
         _activeConsumer = nbt.getBoolean("active_consumer");
-        _energyContainer = EnergyContainer.fromNbt(nbt);
-        _fuelSlot = ItemStack.fromNbt(nbt);
+        _energyContainer = EnergyContainer.fromNbt(nbt.getCompound("energy"));
+        _fuelSlot = ItemStack.fromNbt(nbt.getCompound("fuel_slot"));
     }
 
     @Override
@@ -146,9 +150,16 @@ extends LockableContainerBlockEntity {
             if (fuelTime != null && fuelTime > 0) {
                 _burnTime = fuelTime;
                 _burnTimeTotal = fuelTime;
-                _fuelSlot.decrement(1);
-                Logger.getGlobal().log(Level.INFO, "beeba");
-                getWorld().setBlockState(pos, getWorld().getBlockState(pos).with(Properties.LIT, true));
+
+                if (_fuelSlot.getItem() instanceof BucketItem)
+                    _fuelSlot = new ItemStack(Items.BUCKET, 1);
+                else
+                    _fuelSlot.decrement(1);
+
+                World world = getWorld();
+                BlockState state = world.getBlockState(pos);
+                world.setBlockState(pos, state.with(Properties.LIT, true));
+                markDirty(world, pos, state);
             }
         }
     }
@@ -182,12 +193,11 @@ extends LockableContainerBlockEntity {
         --blockEntity._burnTime;
         blockEntity._energyContainer.addEnergy(1);
 
-        if (!blockEntity.isBurning()) {
+        if (!blockEntity.isBurning()) {;
             blockEntity.tryStartBurning();
-            if (burnedBefore != blockEntity.isBurning()) {
+            if (burnedBefore && !blockEntity.isBurning())
                 world.setBlockState(pos, state.with(Properties.LIT, false));
-                markDirty(world, pos, state);
-            }
+            markDirty(world, pos, state);
         }
     }
 
@@ -201,5 +211,15 @@ extends LockableContainerBlockEntity {
     @Override
     public void clear() {
         _fuelSlot = ItemStack.EMPTY;
+    }
+
+    @Override
+    public ScreenHandler createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+        return createScreenHandler(i, playerInventory);
+    }
+
+    @Override
+    public Text getDisplayName() {
+        return getName();
     }
 }

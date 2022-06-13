@@ -27,12 +27,17 @@ public class ThermalGeneratorScreen extends HandledScreen<ThermalGeneratorScreen
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
-        int mapTo50 = 50 * _screenHandler.getEnergy() / _screenHandler.getMaxEnergy();
-        drawTexture(matrices, x + 99, y + 68 - mapTo50, 179, 15, 7, mapTo50);
-        drawTexture(matrices, x + 99, y + 18, 176, 15, 3, 50);
+
+        // draw burn
+        int burnTotal = _screenHandler.getBurnTimeTotal();
+        int burnMapped = burnTotal > 0 ? 15 * _screenHandler.getBurnTime() / burnTotal : 0;
+        drawTexture(matrices, x + 74, y + 37 - burnMapped, 176, 14 - burnMapped, 14, burnMapped);
+
+        // draw energy
+        int energyMax = _screenHandler.getMaxEnergy();
+        int energyMapped = energyMax > 0 ? 50 * _screenHandler.getEnergy() / energyMax : 0;
+        drawTexture(matrices, x + 99, y + 68 - energyMapped, 176, 65 - energyMapped, 14, energyMapped);
         textRenderer.draw(matrices, Integer.toString(_screenHandler.getEnergy()) + "/" + Integer.toString(_screenHandler.getMaxEnergy()), x + 98, y + 70, 0xe92727);
-        //at 99, 18
-        //from 176, 14
     }
  
     @Override
