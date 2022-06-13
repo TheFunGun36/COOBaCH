@@ -83,6 +83,9 @@ public class COOBaCH implements ModInitializer {
 		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(8));
 
 	public static final ToolItem IRON_HAMMER = new ToolItem(ToolMaterials.IRON, 
+		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(24));
+
+	public static final ToolItem BRONZE_HAMMER = new ToolItem(BronzeToolMaterial.INSTANCE, 
 		new FabricItemSettings().group(COOBaCH.COOBACH_GROUP).maxDamage(40));
 
 	public static final ToolItem STEEL_HAMMER = new ToolItem(SteelToolMaterial.INSTANCE, 
@@ -134,6 +137,7 @@ public class COOBaCH implements ModInitializer {
 	public static final Item STEEL_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item COPPER_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 	public static final Item TIN_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
+	public static final Item BRONZE_PLATE = new Item(new FabricItemSettings().group(COOBaCH.COOBACH_GROUP));
 
 	//World Gen - Ores Blocks
 
@@ -180,6 +184,7 @@ public class COOBaCH implements ModInitializer {
 		// Tools
 		Registry.register(Registry.ITEM, "coobach:stone_hammer", STONE_HAMMER);
 		Registry.register(Registry.ITEM, "coobach:iron_hammer", IRON_HAMMER);
+		Registry.register(Registry.ITEM, "coobach:bronze_hammer", BRONZE_HAMMER);
 		Registry.register(Registry.ITEM, "coobach:steel_hammer", STEEL_HAMMER);
 
 		Registry.register(Registry.ITEM, "coobach:bronze_sword", BRONZE_SWORD);
@@ -214,6 +219,7 @@ public class COOBaCH implements ModInitializer {
 		Registry.register(Registry.ITEM, "coobach:steel_plate", STEEL_PLATE);
 		Registry.register(Registry.ITEM, "coobach:copper_plate", COPPER_PLATE);
 		Registry.register(Registry.ITEM, "coobach:tin_plate", TIN_PLATE);
+		Registry.register(Registry.ITEM, "coobach:bronze_plate", BRONZE_PLATE);
 
 		// World Gen - Ores
 

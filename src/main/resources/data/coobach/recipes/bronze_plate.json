@@ -1,0 +1,14 @@
+{
+  "type": "coobach:crafting_shapeless_with_tools",
+  "ingredients": [
+    {
+      "tag": "coobach:hammer"
+    },
+    {
+      "item": "coobach:bronze_ingot"
+    }
+  ],
+  "result": {
+    "item": "coobach:bronze_plate"
+  }
+}
