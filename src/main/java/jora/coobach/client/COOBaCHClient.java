@@ -1,5 +1,7 @@
-package jora.coobach;
+package jora.coobach.client;
 
+import jora.coobach.COOBaCH;
+import jora.coobach.client.gui.screen.ingame.ThermalGeneratorScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

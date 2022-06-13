@@ -1,0 +1,14 @@
+{
+  "type": "coobach:crafting_shapeless_with_tools",
+  "ingredients": [
+    {
+      "tag": "coobach:hammer"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    }
+  ],
+  "result": {
+    "item": "coobach:copper_plate"
+  }
+}

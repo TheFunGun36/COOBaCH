@@ -23,7 +23,7 @@
       "jora.coobach.COOBaCH"
     ],
     "client": [
-      "jora.coobach.COOBaCHClient"
+      "jora.coobach.client.COOBaCHClient"
     ]
   },
   "mixins": [

@@ -1,4 +1,4 @@
-package jora.coobach;
+package jora.coobach.energy;
 
 import net.minecraft.nbt.NbtCompound;
 

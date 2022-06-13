@@ -1,5 +1,7 @@
-package jora.coobach;
+package jora.coobach.block;
 
+import jora.coobach.COOBaCH;
+import jora.coobach.block.entity.ThermalGeneratorBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;

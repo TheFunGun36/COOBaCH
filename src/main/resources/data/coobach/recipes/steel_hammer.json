@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+      "A": {
+        "item": "coobach:steel_ingot"
+      },
+      "B": {
+        "item": "minecraft:stick"
+      }
+    },
+    "pattern": [
+      "AA ",
+      "ABB",
+      "AA "
+    ],
+    "result": {
+      "item": "coobach:steel_hammer"
+  }
+  }
+  

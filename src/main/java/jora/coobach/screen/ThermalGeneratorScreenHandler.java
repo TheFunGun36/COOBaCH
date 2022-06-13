@@ -1,5 +1,6 @@
-package jora.coobach;
+package jora.coobach.screen;
 
+import jora.coobach.COOBaCH;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

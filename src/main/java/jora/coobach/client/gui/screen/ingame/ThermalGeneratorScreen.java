@@ -1,7 +1,8 @@
-package jora.coobach;
+package jora.coobach.client.gui.screen.ingame;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import jora.coobach.screen.ThermalGeneratorScreenHandler;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;

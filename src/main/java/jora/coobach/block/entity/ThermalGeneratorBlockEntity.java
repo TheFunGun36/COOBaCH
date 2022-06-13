@@ -1,10 +1,13 @@
-package jora.coobach;
+package jora.coobach.block.entity;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Nullable;
 
+import jora.coobach.COOBaCH;
+import jora.coobach.energy.EnergyContainer;
+import jora.coobach.screen.ThermalGeneratorScreenHandler;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
