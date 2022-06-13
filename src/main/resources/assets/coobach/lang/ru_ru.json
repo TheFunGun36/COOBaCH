@@ -1,4 +1,9 @@
 {
   "item.coobach.steel_ingot": "Стальной слиток",
-  "item.coobach.thermal_generator": "Термоэлектрогенератор"
+  "item.coobach.steel_hammer": "Стальной молот",
+  "item.coobach.iron_hammer": "Железный молот",
+  "item.coobach.steel_plate": "Стальная пластина",
+  "item.coobach.iron_plate": "Железная пластина",
+  "item.coobach.thermal_generator": "Термоэлектрогенератор",
+  "container.coobach.thermal_generator": "Термоэлектрогенератор"
 }

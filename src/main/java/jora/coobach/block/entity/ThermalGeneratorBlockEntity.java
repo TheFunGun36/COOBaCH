@@ -83,7 +83,7 @@ extends LockableContainerBlockEntity {
 
     @Override
     public Text getContainerName() {
-        return Text.translatable("container.thermal_generator");
+        return Text.translatable("container.coobach.thermal_generator");
     }
 
     @Override

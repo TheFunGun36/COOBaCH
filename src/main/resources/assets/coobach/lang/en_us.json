@@ -1,4 +1,10 @@
 {
   "item.coobach.steel_ingot": "Steel ingot",
-  "item.coobach.thermal_generator": "Thermal generator"
+  "item.coobach.steel_hammer": "Steel hammer",
+  "item.coobach.iron_hammer": "Iron hammer",
+  "item.coobach.steel_plate": "Steel plate",
+  "item.coobach.iron_plate": "Iron plate",
+  "item.coobach.copper_plate": "Copper plate",
+  "block.coobach.thermal_generator": "Thermal generator",
+  "container.coobach.thermal_generator": "Thermal generator"
 }
