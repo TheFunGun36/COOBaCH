@@ -1,0 +1,14 @@
+{
+  "type": "coobach:crafting_shapeless_with_tools",
+  "ingredients": [
+    {
+      "tag": "coobach:hammer"
+    },
+    {
+      "item": "minecraft:raw_copper"
+    }
+  ],
+  "result": {
+    "item": "coobach:copper_crashed_ore"
+  }
+}

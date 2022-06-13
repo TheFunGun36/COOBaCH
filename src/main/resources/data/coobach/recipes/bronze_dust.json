@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "coobach:copper_crashed_ore"
+    },
+    {
+      "item": "coobach:copper_crashed_ore"
+    },
+    {
+      "item": "coobach:copper_crashed_ore"
+    },
+    {
+      "item": "coobach:tin_crashed_ore"
+    }
+  ],
+  "result": {
+    "item": "coobach:bronze_dust",
+    "count":3
+  }
+}

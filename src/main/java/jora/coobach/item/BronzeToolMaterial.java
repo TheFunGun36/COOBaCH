@@ -5,23 +5,23 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 
-public class SteelToolMaterial implements ToolMaterial{
+public class BronzeToolMaterial implements ToolMaterial{
 
-    public static final SteelToolMaterial INSTANCE = new SteelToolMaterial();
+    public static final BronzeToolMaterial INSTANCE = new BronzeToolMaterial();
 
     @Override
     public int getDurability() {
-        return 500;
+        return 350;
     }
 
     @Override
     public float getMiningSpeedMultiplier() {
-        return 1.15f * ToolMaterials.IRON.getMiningSpeedMultiplier();
+        return ToolMaterials.IRON.getMiningSpeedMultiplier();
     }
 
     @Override
     public float getAttackDamage() {
-        return 1.15f * ToolMaterials.IRON.getAttackDamage();
+        return ToolMaterials.IRON.getAttackDamage();
     }
 
     @Override
@@ -31,11 +31,11 @@ public class SteelToolMaterial implements ToolMaterial{
 
     @Override
     public int getEnchantability() {
-        return ToolMaterials.IRON.getEnchantability() - 2;
+        return ToolMaterials.IRON.getEnchantability();
     }
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(COOBaCH.STEEL_INGOT);
+        return Ingredient.ofItems(COOBaCH.BRONZE_INGOT);
     }
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "coobach:item/tin_crashed_ore"
+    }
+}
