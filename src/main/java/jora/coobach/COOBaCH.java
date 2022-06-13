@@ -11,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.option.SimpleOption.TooltipFactory;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;

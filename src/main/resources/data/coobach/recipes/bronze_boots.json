@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+      "#": {
+        "item": "coobach:bronze_ingot"
+      }
+    },
+    "pattern": [
+      "# #",
+      "# #"
+    ],
+    "result": {
+      "item": "coobach:bronze_boots"
+  }
+  }
+  

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "key": {
+      "A": {
+        "item": "coobach:bronze_ingot"
+      },
+      "B": {
+        "item": "minecraft:stick"
+      }
+    },
+    "pattern": [
+      "AA",
+      " B",
+      " B"
+    ],
+    "result": {
+      "item": "coobach:bronze_hoe"
+  }
+  }
+  
