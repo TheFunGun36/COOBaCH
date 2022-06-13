@@ -21,6 +21,9 @@
   "entrypoints": {
     "main": [
       "jora.coobach.COOBaCH"
+    ],
+    "client": [
+      "jora.coobach.COOBaCHClient"
     ]
   },
   "mixins": [
